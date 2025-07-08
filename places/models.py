@@ -1,4 +1,5 @@
 from django.db import models
+#from django.utils.timezone import now
 
 # Create your models here.
 class Place(models.Model):
@@ -6,6 +7,8 @@ class Place(models.Model):
     subtitle = models.CharField(max_length=100, verbose_name='Subtitulo')
     description = models.TextField(verbose_name='Descripción')
     image = models.ImageField(upload_to='places', verbose_name='Imagen')
+    #published = models.DateTimeField(
+       # verbose_name="Fecha de publicación", default=now)
     created = models.DateTimeField(
         auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(

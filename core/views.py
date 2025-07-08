@@ -1,11 +1,8 @@
 from django.shortcuts import render, HttpResponse
+from places.models import Place
 
 
 # Create your views here.
 def home(request): 
-    return render(request,'core/index.html')
-
-def users(request): 
-    return render(request,'core/users.html')
-
-
+    places=Place.objects.all()
+    return render(request,'core/index.html',{'places':places})
