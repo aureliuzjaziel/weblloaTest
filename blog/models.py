@@ -27,5 +27,5 @@ class BlogEntry(models.Model):
     @property
     def formatted_date(self):
         if self.published_date:
-            return self.published_date.strftime("%d %B %Y")
-        return self.created_date.strftime("%d %B %Y")
+            return self.published_date.strftime("%d de %B de %Y")
+        return self.created_date.strftime("%d de %B de %Y")
