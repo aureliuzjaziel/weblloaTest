@@ -8,6 +8,8 @@ https://templatemo.com/tm-518-sentra
 
 body {
   font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
 }
 
 p {
@@ -19,6 +21,9 @@ p {
 .page-content {
   width: 77.5%;
   float: right;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  min-height: 100vh;
 }
 
 .content-section {
@@ -48,6 +53,19 @@ p {
   color: #232323;
   display: inline-block;
   margin-right: 50px;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.section-heading h1:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #45489a, #5f61a9);
+  border-radius: 2px;
 }
 
 .section-heading em {
@@ -70,19 +88,40 @@ p {
   font-weight: 600;
   color: #45489a;
   text-transform: capitalize;
-  background-color: #fff;
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
   display: inline-block;
   height: 44px;
   line-height: 44px;
   padding: 0px 25px;
   letter-spacing: 0.25px;
   text-decoration: none;
-  transition: all 0.3s;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(69,72,154,0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.white-button a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(69,72,154,0.1), transparent);
+  transition: left 0.5s;
+}
+
+.white-button a:hover:before {
+  left: 100%;
 }
 
 .white-button a:hover {
-  background-color: #45489a;
+  background: linear-gradient(135deg, #45489a 0%, #5f61a9 100%);
   color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(69,72,154,0.4);
 }
 
 .accent-button a {
@@ -90,19 +129,40 @@ p {
   font-weight: 600;
   color: #fff;
   text-transform: capitalize;
-  background-color: #45489a;
+  background: linear-gradient(135deg, #45489a 0%, #5f61a9 100%);
   display: inline-block;
   height: 44px;
   line-height: 44px;
   padding: 0px 25px;
   letter-spacing: 0.25px;
   text-decoration: none;
-  transition: all 0.3s;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(69,72,154,0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.accent-button a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.accent-button a:hover:before {
+  left: 100%;
 }
 
 .accent-button a:hover {
-  background-color: #fff;
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
   color: #45489a;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(69,72,154,0.2);
 }
 
 header {
@@ -181,8 +241,11 @@ header {
   float: left;
   height: 100%;
   position: fixed;
-  background-color: rgba(12,12,12,0.9);
+  background: linear-gradient(135deg, rgba(12,12,12,0.95) 0%, rgba(69,72,154,0.9) 100%);
+  backdrop-filter: blur(10px);
+  box-shadow: 2px 0 20px rgba(0,0,0,0.3);
   z-index: 10;
+  transition: all 0.3s ease;
 }
 
 .sidebar-navigation .logo {
@@ -190,9 +253,16 @@ header {
   width: 100%;
   height: 140px;
   line-height: 100px;
-  background-color: #841571;
+  background: linear-gradient(135deg, #841571 0%, #c44569 100%);
   padding: 20px;
   text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.sidebar-navigation .logo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.3);
 }
 
 .sidebar-navigation .logo a {
@@ -205,7 +275,16 @@ header {
   height: 100px;
   width: 100%;
   display: inline-block;
-  border: 1px solid rgba(250,250,250,0.5);
+  border: 2px solid rgba(250,250,250,0.3);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.sidebar-navigation .logo a:hover {
+  border-color: rgba(250,250,250,0.8);
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.02);
 }
 
 .sidebar-navigation .logo em {
@@ -244,6 +323,31 @@ header {
   font-size: 15px;
   letter-spacing: 0.5px;
   text-transform: capitalize;
+  padding: 8px 15px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-navigation nav a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.sidebar-navigation nav a:hover:before {
+  left: 100%;
+}
+
+.sidebar-navigation nav a:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateX(10px);
 }
 .circle{
   margin-right: 5px;
@@ -530,6 +634,17 @@ header {
   text-align: left;
   position: relative;
   z-index: 10;
+  background: rgba(255,255,255,0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+#featured .item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
 #featured .item .image {
@@ -539,6 +654,12 @@ header {
 #featured .item .image img {
   width: 100%;
   overflow: hidden;
+  border-radius: 15px 15px 0 0;
+  transition: all 0.5s ease;
+}
+
+#featured .item:hover .image img {
+  transform: scale(1.1);
 }
 
 #featured .item .image .featured-button a {
@@ -735,8 +856,11 @@ header {
   padding: 0px;
   height: 90px;
   width: 100%;
-  background-color: #eee;
-  border-bottom: 10px solid #45489a;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px 15px 0 0;
+  border-bottom: 4px solid #45489a;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
 }
 
 #blog .tabs li {
@@ -758,7 +882,25 @@ header {
   font-size: 19px;
   line-height: 80px;
   font-weight: 600;
-  transition: 0.5s;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#blog .tabs a:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #45489a, #5f61a9);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+#blog .tabs a:hover:before {
+  width: 80%;
 }
 
 #blog .tabs a:hover {
@@ -771,13 +913,34 @@ header {
 }
 
 #blog .tabs .active {
-  background-color: #45489a;
+  background: linear-gradient(135deg, #45489a 0%, #5f61a9 100%);
   color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+#blog .tabs .active:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
 .tabgroup {
-  background-color: #f4f4f4;
-  padding: 20px 30px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 30px;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
 }
 
 .clearfix:after {
@@ -795,9 +958,20 @@ header {
 #blog .tabgroup ul li {
   display: inline-block;
   text-align: left;
-  margin-bottom: 10px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-bottom: 1px solid rgba(221,221,221,0.3);
+  background: rgba(255,255,255,0.8);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+#blog .tabgroup ul li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.95);
 }
 
 #blog .tabgroup ul li:last-child {
@@ -811,6 +985,14 @@ header {
   margin-right: 30px;
   max-width: 100%;
   overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+#blog .tabgroup ul li:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 #blog .tabgroup ul li .text-content {
   display: inline;
@@ -912,12 +1094,14 @@ header {
 /* Footer Style */
 
 .footer {
-  background-color: rgba(12,12,12,0.9);
+  background: linear-gradient(135deg, rgba(12,12,12,0.95) 0%, rgba(69,72,154,0.9) 100%);
   height: 80px;
   line-height: 80px;
   display: inline-block;
   text-align: center;
   width: 100%;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
 }
 
 .footer p {
@@ -938,6 +1122,43 @@ header {
 
 
 /* Responsive Style */
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.content-section {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.sidebar-navigation {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+#featured .item {
+  animation: fadeInUp 0.6s ease-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
 
 @media (max-width: 992px) {
 
