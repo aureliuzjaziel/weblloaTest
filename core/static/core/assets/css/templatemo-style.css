@@ -1443,7 +1443,7 @@ body::before {
 #featured .item .image img:hover,
 #blog .tabgroup ul li img:hover {
   /*transform: scale(1.1) rotate(2deg);
-  filter: brightness(1.1) contrast(1.2);
+  filter: brightness(1.1) contrast(1.2);*/
 }
 
 /* Scroll bar personalizada */

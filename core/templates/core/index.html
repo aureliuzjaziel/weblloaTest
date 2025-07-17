@@ -19,6 +19,7 @@ https://templatemo.com/tm-518-sentra
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link rel="stylesheet" href="{% static 'core/assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'core/assets/css/bootstrap.css' %}">
         <link rel="stylesheet" href="{% static 'core/assets/css/bootstrap-theme.min.css' %}">
         <link rel="stylesheet" href="{% static 'core/assets/css/fontAwesome.css' %}">
         <link rel="stylesheet" href="{% static 'core/assets/css/light-box.css' %}">
@@ -187,7 +188,18 @@ https://templatemo.com/tm-518-sentra
                             <div class="image">
                                 <img src="{{place.image.url}}" alt="">
                                 <div class="featured-button button">
-                                    <a href="#projects">Leer Más</a>
+                                    <a href="#" class="abrir-modal">Leer Más</a>
+                                    <!-- Contenedor del Modal -->
+                                    <div class="mi-modal modal">
+                                        <div class="modal-contenido">
+                                            <span class="cerrar">&times;</span>
+                                            <h2>{{place.title}}</h2>
+                                            <p>{{place.description}}</p>
+                                            <button class="btn-enlace" onclick="window.open('{{ place.url }}', '_blank')">
+                                                Dirección
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="text-content">
@@ -278,8 +290,6 @@ https://templatemo.com/tm-518-sentra
                             <ul class="tabs clearfix" data-tabgroup="first-tab-group">
                               {% for month in months_data %}
                                 <li><a href="#tab-{{ month.key }}" {% if forloop.first %}class="active"{% endif %}>{{ month.display }}</a></li>
-                              {% empty %}
-                                <li><a href="#tab1" class="active">Julio 2025</a></li>
                               {% endfor %}
                             </ul>
                             <section id="first-tab-group" class="tabgroup">
@@ -296,43 +306,15 @@ https://templatemo.com/tm-518-sentra
                                                     <p>{{entry.excerpt}}</p>
                                                     
                                                     <div class="accent-button button">
-                                                        <a href="#contact">Continuar Leyendo</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                                {% empty %}
-                                <div id="tab1">
-                                    <ul>
-                                        {% for entry in blog_entries %}
-                                        <li>
-                                            <div class="item">
-                                                <img src="{{entry.image.url}}" alt="{{entry.title}}">
-                                                <div class="text-content">
-                                                    <h4>{{entry.title}}</h4>
-                                                    <span>{{entry.formatted_date}}</span>
-                                                    <p>{{entry.excerpt}}</p>
-                                                    
-                                                    <div class="accent-button button">
-                                                        <a href="#contact">Continuar Leyendo</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        {% empty %}
-                                        <li>
-                                            <div class="item">
-                                                <img src="img/blog_1.jpg" alt="">
-                                                <div class="text-content">
-                                                    <h4>Festival de la Chicha en Lloa</h4>
-                                                    <span>25 Julio 2025</span>
-                                                    <p>Celebramos nuestra tradición ancestral con el Festival de la Chicha, donde podrás degustar esta bebida tradicional y conocer el proceso de elaboración que ha pasado de generación en generación en nuestra comunidad.</p>
-                                                    
-                                                    <div class="accent-button button">
-                                                        <a href="#contact">Continuar Leyendo</a>
+                                                        <a href="#" class="abrir-modal">Continuar Leyendo</a>
+                                                        <!-- Contenedor del Modal -->
+                                                        <div class="mi-modal modal">
+                                                            <div class="modal-contenido">
+                                                                <span class="cerrar">&times;</span>
+                                                                <h2>{{entry.title}}</h2>
+                                                                <p>{{entry.excerpt}}</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

@@ -9,7 +9,7 @@ class Place(models.Model):
     image = models.ImageField(upload_to='places', verbose_name='Imagen')
     #published = models.DateTimeField(
        # verbose_name="Fecha de publicación", default=now)
-    url = models.URLField(blank=True, null=True, verbose_name="Enlace del producto")
+    url = models.URLField(blank=True, null=True, verbose_name="Enlace dirección")
        
        
     created = models.DateTimeField(
