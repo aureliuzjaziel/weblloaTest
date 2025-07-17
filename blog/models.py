@@ -24,6 +24,32 @@ class BlogEntry(models.Model):
         self.is_published = True
         self.save()
     
+    def save(self, *args, **kwargs):
+        # Primero guardamos la instancia actual
+        super().save(*args, **kwargs)
+        
+        # Si esta entrada se está publicando, verificamos el límite
+        if self.is_published:
+            self._enforce_publication_limit()
+    
+    def _enforce_publication_limit(self):
+        """Mantiene solo las 3 entradas más recientes publicadas"""
+        published_entries = BlogEntry.objects.filter(
+            is_published=True
+        ).order_by('-published_date', '-created_date')
+        
+        # Si hay más de 3 entradas publicadas
+        if published_entries.count() > 5:
+            # Obtener las entradas que exceden el límite
+            entries_to_delete = published_entries[5:]
+            
+            # Eliminar las entradas más antiguas
+            for entry in entries_to_delete:
+                # Eliminar la imagen asociada si existe
+                if entry.image:
+                    entry.image.delete(save=False)
+                entry.delete()
+    
     @property
     def formatted_date(self):
         if self.published_date:

@@ -23,6 +23,7 @@ from django.conf import settings
 urlpatterns = [
     path('',include('core.urls')),
     path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls')),
 ]
 # urls de la imágenes para la web
 if settings.DEBUG:

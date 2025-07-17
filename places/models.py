@@ -9,10 +9,14 @@ class Place(models.Model):
     image = models.ImageField(upload_to='places', verbose_name='Imagen')
     #published = models.DateTimeField(
        # verbose_name="Fecha de publicación", default=now)
+    url = models.URLField(blank=True, null=True, verbose_name="Enlace del producto")
+       
+       
     created = models.DateTimeField(
         auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(
         auto_now=True, verbose_name="Fecha de actualización")
+    
     
 
     class Meta:

@@ -247,7 +247,7 @@ header {
   float: left;
   height: 100%;
   position: fixed;
-  background: linear-gradient(135deg, rgba(0,107,74,0.95) 0%, rgba(0,173,124,0.9) 50%, rgba(82,214,129,0.85) 100%);
+  background: linear-gradient(135deg, rgba(14, 70, 52, 0.95) 0%, rgba(8, 75, 56, 0.9) 50%, rgba(82,214,129,0.85) 100%);
   backdrop-filter: blur(20px);
   box-shadow: 4px 0 25px rgba(0,173,124,0.3);
   z-index: 10;
@@ -675,7 +675,7 @@ header {
 }
 
 #featured .item:hover .image img {
-  transform: scale(1.1);
+  /*transform: scale(1.1);*/
 }
 
 #featured .item .image .featured-button a {
@@ -1005,11 +1005,11 @@ header {
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+  /*transition: all 0.3s ease;*/
 }
 
 #blog .tabgroup ul li:hover img {
-  transform: scale(1.05);
+  /*transform: scale(1.05);*/
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 #blog .tabgroup ul li .text-content {
@@ -1442,7 +1442,7 @@ body::before {
 /* Efectos de hover para imágenes */
 #featured .item .image img:hover,
 #blog .tabgroup ul li img:hover {
-  transform: scale(1.1) rotate(2deg);
+  /*transform: scale(1.1) rotate(2deg);
   filter: brightness(1.1) contrast(1.2);
 }
 
