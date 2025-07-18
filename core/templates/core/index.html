@@ -195,9 +195,20 @@ https://templatemo.com/tm-518-sentra
                                             <span class="cerrar">&times;</span>
                                             <h2>{{place.title}}</h2>
                                             <p>{{place.description}}</p>
+                                            
+                                            <!-- Botón de Dirección -->
+                                            {% if place.url %}
                                             <button class="btn-enlace" onclick="window.open('{{ place.url }}', '_blank')">
-                                                Dirección
+                                                📍 Dirección
                                             </button>
+                                            {% endif %}
+                                            
+                                            <!-- Botón de WhatsApp -->
+                                            {% if place.whatsapp_number %}
+                                            <button class="btn-whatsapp" onclick="window.open('{{ place.get_whatsapp_url }}', '_blank')">
+                                                💬 WhatsApp
+                                            </button>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>

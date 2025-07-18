@@ -1479,7 +1479,7 @@ body::before {
 }
 
 .modal-contenido {
-  background: linear-gradient(135deg, #FCF9F9 0%, #F1F864 50%, #7CBD1E 100%);
+  background: linear-gradient(135deg, #FCF9F9 0%, #F1F864 50%, #afe268 100%);
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -1488,6 +1488,8 @@ body::before {
   border-radius: 10px;
   position: relative;
   animation: modalSlideIn 0.3s ease-out;
+  font-weight: 800;
+
 }
 
 @keyframes modalSlideIn {
@@ -1519,7 +1521,7 @@ body::before {
 }
 
 .btn-enlace {
-  background: linear-gradient(135deg, #7CBD1E 0%, #BCEB3C 100%);
+  background: linear-gradient(135deg, #7CBD1E 0%, #c9eb6a 100%);
   color: white;
   padding: 10px 20px;
   border: none;
@@ -1534,6 +1536,28 @@ body::before {
   background: linear-gradient(135deg, #BCEB3C 0%, #7CBD1E 100%);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-whatsapp:hover {
+  background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
 }
 
 /* Responsive para modal */
