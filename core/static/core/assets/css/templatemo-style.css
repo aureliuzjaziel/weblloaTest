@@ -523,8 +523,9 @@ header {
 }
 
 .Modern-Slider .item .image {
-  width: "120px";
-  height: "100px";
+  /* Corrige los valores de width y height para que sean válidos */
+  width: 100%;
+  height: 100vh;
   background-position: center center;
   background-size: cover;
   display: block;
