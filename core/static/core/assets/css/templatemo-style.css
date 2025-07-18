@@ -788,7 +788,66 @@ header {
   opacity: 0.5;
 }
 
+/* Collage grid para sección #projects con espacio y bordes redondeados */
+#projects .masonry .row {
+  display: grid;
+  grid-template-areas:
+    "a a b c"
+    "a a d e"
+    "f g d e";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 2fr 1fr 1fr;
+  gap: 18px; /* Espacio blanco entre imágenes */
+  width: 100%;
+  height: 700px; /* Ajusta la altura total del collage */
+  margin: 0 auto;
+  box-sizing: border-box;
+  background: transparent;
+}
 
+#projects .masonry .item {
+  padding: 0;
+  margin: 0;
+  border-radius: 22px;
+  box-shadow: none;
+  overflow: hidden;
+  height: 100%;
+  background: transparent; /* Quita el fondo blanco */
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+#projects .masonry .item:nth-child(1) { grid-area: a; }
+#projects .masonry .item:nth-child(2) { grid-area: b; }
+#projects .masonry .item:nth-child(3) { grid-area: c; }
+#projects .masonry .item:nth-child(4) { grid-area: d; }
+#projects .masonry .item:nth-child(5) { grid-area: e; }
+#projects .masonry .item:nth-child(6) { grid-area: f; }
+#projects .masonry .item:nth-child(7) { grid-area: g; }
+
+#projects .masonry .item .col-md-8,
+#projects .masonry .item .col-md-4 {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+#projects .masonry .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Las imágenes se adaptan y recortan al área */
+  object-position: center;
+  display: block;
+  border-radius: 18px;
+  margin: 0;
+  box-shadow: none;
+  background: transparent; /* Quita fondo blanco de la imagen */
+}
 
 /* Video Presentation Style */
 
