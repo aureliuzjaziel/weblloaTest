@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -187,7 +186,12 @@ https://templatemo.com/tm-518-sentra
                         <div class="item">
                             <div class="image">
                                 <img src="{{place.image.url}}" alt="">
-                                <div class="featured-button button">
+                            </div>
+                            <div class="text-content">
+                                <h4>{{place.title}}</h4>
+                                <span>{{place.subtitle}}</span>
+                                <p>{{place.description}}</p>
+                                <div class="featured-button button" style="margin-top:auto;">
                                     <a href="#" class="abrir-modal">Leer Más</a>
                                     <!-- Contenedor del Modal -->
                                     <div class="mi-modal modal">
@@ -202,14 +206,8 @@ https://templatemo.com/tm-518-sentra
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-content">
-                                <h4>{{place.title}}</h4>
-                                <span>{{place.subtitle}}</span>
-                                <p>{{place.description}}</p>
-                            </div>
                         </div>  
                         {% endfor %}                      
-                        
                     </div>
                 </div>
             </section>

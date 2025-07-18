@@ -523,12 +523,30 @@ header {
 }
 
 .Modern-Slider .item .image {
-  width: 100%;
-  height: 100vh;
+  width: "120px";
+  height: "100px";
   background-position: center center;
   background-size: cover;
   display: block;
 }
+#featured .item .image {
+  width: 100%;
+  height: 220px;           /* Ajusta la altura según tu diseño */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#featured .item .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* Recorta la imagen para llenar el contenedor */
+  object-position: center;
+  border-radius: 25px 25px 0 0;
+  display: block;
+}
+
 
 .Modern-Slider .item-1 .image {
   background-image: url(../img/image-9.jpg);
@@ -1546,4 +1564,75 @@ body::before {
   .mi-modal {
     padding-top: 50px;
   }
+}
+
+.owl-carousel,
+.owl-carousel .owl-stage,
+.owl-carousel .owl-stage-outer {
+    display: block !important;
+    align-items: initial !important;
+    height: auto;
+}
+
+.owl-carousel .item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 430px;
+    max-height: 430px; /* Fuerza todas las tarjetas a la misma altura */
+    background: transparent;
+}
+
+.owl-carousel .item .image {
+    flex-shrink: 0;
+    height: 220px;
+    overflow: hidden;
+}
+
+.owl-carousel .item .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 25px 25px 0 0;
+    display: block;
+}
+
+.owl-carousel .item .text-content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: #fff;
+    border-radius: 0 0 20px 20px;
+    padding: 20px 20px 10px 20px;
+    min-height: 180px;
+    max-height: 210px; /* Limita la altura del texto */
+    box-sizing: border-box;
+    overflow: auto; /* Permite scroll si el texto es muy largo */
+}
+
+.featured-button .abrir-modal {
+  display: inline-block;
+  background: linear-gradient(135deg, #43a047 0%, #b9f6ca 100%);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 28px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  box-shadow: 0 4px 16px rgba(67,160,71,0.15);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.featured-button .abrir-modal:hover,
+.featured-button .abrir-modal:focus {
+  background: linear-gradient(135deg, #388e3c 0%, #66bb6a 100%);
+  color: #fff !important;
+  transform: translateY(-2px) scale(1.04);
+  text-decoration: none;
 }
