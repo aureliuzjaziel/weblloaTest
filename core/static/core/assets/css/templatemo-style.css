@@ -1659,7 +1659,7 @@ body::before {
 }
 
 .modal-contenido {
-  background: linear-gradient(135deg, #FCF9F9 0%, #F1F864 50%, #afe268 100%);
+  background: linear-gradient(135deg, #FCF9F9 0%, #F1F864 50%, #82b43b 100%);
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
