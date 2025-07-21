@@ -191,31 +191,17 @@ https://templatemo.com/tm-518-sentra
                             <div class="text-content">
                                 <h4>{{place.title}}</h4>
                                 <span>{{place.subtitle}}</span>
-                                <p>{{place.description}}</p>
+                                <p>
+                                  {{ place.description|truncatewords:20 }}...
+                                </p>
                                 <div class="featured-button button" style="margin-top:auto;">
-                                    <a href="#" class="abrir-modal">Leer Más</a>
-                                    <!-- Contenedor del Modal -->
-                                    <div class="mi-modal modal">
-                                        <div class="modal-contenido">
-                                            <span class="cerrar">&times;</span>
-                                            <h2>{{place.title}}</h2>
-                                            <p>{{place.description}}</p>
-                                            
-                                            <!-- Botón de Dirección -->
-                                            {% if place.url %}
-                                            <button class="btn-enlace" onclick="window.open('{{ place.url }}', '_blank')">
-                                                📍 Dirección
-                                            </button>
-                                            {% endif %}
-                                            
-                                            <!-- Botón de WhatsApp -->
-                                            {% if place.whatsapp_number %}
-                                            <button class="btn-whatsapp" onclick="window.open('{{ place.get_whatsapp_url }}', '_blank')">
-                                                💬 WhatsApp
-                                            </button>
-                                            {% endif %}
-                                        </div>
-                                    </div>
+                                    <a href="#" class="abrir-modal"
+                                       data-title="{{place.title|escapejs}}"
+                                       data-description="{{place.description|escapejs}}"
+                                       data-img="{{place.image.url}}"
+                                       {% if place.url %}data-url="{{place.url}}"{% endif %}
+                                       {% if place.whatsapp_number %}data-whatsapp="{{place.get_whatsapp_url}}"{% endif %}
+                                    >Leer Más</a>
                                 </div>
                             </div>
                         </div>  
@@ -322,18 +308,21 @@ https://templatemo.com/tm-518-sentra
                                                 <img src="{{entry.image.url}}" alt="{{entry.title}}">
                                                 <div class="text-content">
                                                     <h4>{{entry.title}}</h4>
-                                                    <p>{{entry.excerpt}}</p>
-                                                    
+                                                    <p>
+                                                      {% if entry.description %}
+                                                        {{ entry.description|truncatewords:20 }}...
+                                                      {% elif entry.excerpt %}
+                                                        {{ entry.excerpt|truncatewords:20 }}...
+                                                      {% else %}
+                                                        Sin descripción.
+                                                      {% endif %}
+                                                    </p>
                                                     <div class="accent-button button">
-                                                        <a href="#" class="abrir-modal">Continuar Leyendo</a>
-                                                        <!-- Contenedor del Modal -->
-                                                        <div class="mi-modal modal">
-                                                            <div class="modal-contenido">
-                                                                <span class="cerrar">&times;</span>
-                                                                <h2>{{entry.title}}</h2>
-                                                                <p>{{entry.excerpt}}</p>
-                                                            </div>
-                                                        </div>
+                                                        <a href="#" class="abrir-modal"
+                                                           data-title="{{entry.title|escapejs}}"
+                                                           data-description="{% if entry.content %}{{entry.content|escapejs}}{% elif entry.description %}{{entry.description|escapejs}}{% elif entry.excerpt %}{{entry.excerpt|escapejs}}{% else %}Sin descripción.{% endif %}"
+                                                           data-img="{{entry.image.url}}"
+                                                        >Continuar Leyendo</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -459,3 +448,70 @@ https://templatemo.com/tm-518-sentra
 
 </body>
 </html>
+
+<!-- Modal global único al final del body -->
+<div class="mi-modal" id="modalGlobal">
+  <div class="modal-contenido modal-flex">
+    <span class="cerrar" id="cerrarModal">&times;</span>
+    <div class="modal-img-col">
+      <img id="modalImagen" src="" alt="" style="max-width:100%;max-height:340px;display:none;margin-bottom:18px;border-radius:12px;">
+    </div>
+    <div class="modal-text-col">
+      <h2 id="modalTitulo"></h2>
+      <p id="modalDescripcion"></p>
+      <div id="modalBotones" class="modal-botones-center"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function openModal(title, description, url, whatsapp, img) {
+    document.getElementById('modalTitulo').textContent = title || '';
+    document.getElementById('modalDescripcion').textContent = description || '';
+    let botones = '';
+    if (url) {
+      botones += `<button class="btn-enlace" onclick="window.open('${url}', '_blank')">📍 Dirección</button>`;
+    }
+    if (whatsapp) {
+      botones += `<button class="btn-whatsapp" onclick="window.open('${whatsapp}', '_blank')">💬 WhatsApp</button>`;
+    }
+    document.getElementById('modalBotones').innerHTML = botones;
+    // Imagen
+    var imgEl = document.getElementById('modalImagen');
+    if (img) {
+      imgEl.src = img;
+      imgEl.style.display = 'block';
+    } else {
+      imgEl.src = '';
+      imgEl.style.display = 'none';
+    }
+    document.getElementById('modalGlobal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  document.querySelectorAll('.abrir-modal').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openModal(
+        this.dataset.title,
+        this.dataset.description,
+        this.dataset.url,
+        this.dataset.whatsapp,
+        this.dataset.img
+      );
+    });
+  });
+
+  document.getElementById('cerrarModal').onclick = function() {
+    document.getElementById('modalGlobal').style.display = 'none';
+    document.body.style.overflow = '';
+  };
+  document.getElementById('modalGlobal').onclick = function(e) {
+    if (e.target === this) {
+      this.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  };
+});
+</script>

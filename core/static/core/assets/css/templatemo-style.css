@@ -213,6 +213,7 @@ p {
   overflow: hidden;
   border: 2px solid rgba(255,248,181,0.3);
   text-align: center;
+  align-items: center;
 }
 
 .accent-button a:before {
@@ -827,6 +828,8 @@ header {
   background-color: #fff;
   position: relative;
   z-index: 10;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 #featured .item .text-content h4 {
@@ -845,6 +848,16 @@ header {
   color: #7a7a7a;
   letter-spacing: 0.5px;
   margin-bottom: 12.5px;
+}
+
+#featured .item .text-content p {
+  font-size: 15px;
+  color: #6c757d;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: justify;
+  display: block; /* <-- asegúrate que el texto se muestre */
+  /* Si hay un display: none heredado, esto lo sobrescribe */
 }
 
 
@@ -1202,6 +1215,8 @@ header {
   display: block;
   overflow: hidden;
   padding-left: 10px;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 #blog .item .text-content h4 {
@@ -1230,10 +1245,16 @@ header {
   line-height: 1.6;
   margin-bottom: 15px;
   text-align: justify;
+  display: block; /* <-- asegúrate que el texto se muestre */
+  /* Si hay un display: none heredado, esto lo sobrescribe */
 }
 
 #blog .item .text-content .accent-button {
   margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
 }
 
 #blog .item .text-content .accent-button a {
@@ -1245,18 +1266,10 @@ header {
   font-size: 14px;
   font-weight: 600;
   transition: all 0.3s ease;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-#blog .item .text-content .accent-button a:hover {
-  background: linear-gradient(135deg, #52D681 0%, #B5FF7D 100%);
-  color: #2c3e50;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0,173,124,0.3);
-}
-
-
-
 
 /* Contact Style */
 
@@ -1854,4 +1867,76 @@ body::before {
   color: #fff !important;
   transform: translateY(-2px) scale(1.04);
   text-decoration: none;
+}
+
+/* Modal en dos columnas: imagen izquierda, texto derecha */
+.modal-contenido.modal-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  padding: 36px 32px 32px 32px;
+}
+
+.modal-img-col {
+  flex: 0 0 260px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.modal-text-col {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.modal-text-col h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.modal-text-col p {
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+  text-align: justify;
+}
+
+.modal-botones-center {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* Responsive para modal */
+@media (max-width: 900px) {
+  .modal-contenido.modal-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 8px 16px 8px;
+  }
+  .modal-img-col {
+    justify-content: center;
+    width: 100%;
+  }
+  .modal-text-col {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  .modal-text-col h2,
+  .modal-text-col p {
+    text-align: center;
+  }
 }
