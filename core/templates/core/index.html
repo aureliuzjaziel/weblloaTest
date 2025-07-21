@@ -197,7 +197,7 @@ https://templatemo.com/tm-518-sentra
                                 <div class="featured-button button" style="margin-top:auto;">
                                     <a href="#" class="abrir-modal"
                                        data-title="{{place.title|escapejs}}"
-                                       data-description="{{place.description|escapejs}}"
+                                       data-description="{{place.description|escape|linebreaksbr}}"
                                        data-img="{{place.image.url}}"
                                        {% if place.url %}data-url="{{place.url}}"{% endif %}
                                        {% if place.whatsapp_number %}data-whatsapp="{{place.get_whatsapp_url}}"{% endif %}
@@ -320,7 +320,7 @@ https://templatemo.com/tm-518-sentra
                                                     <div class="accent-button button">
                                                         <a href="#" class="abrir-modal"
                                                            data-title="{{entry.title|escapejs}}"
-                                                           data-description="{% if entry.content %}{{entry.content|escapejs}}{% elif entry.description %}{{entry.description|escapejs}}{% elif entry.excerpt %}{{entry.excerpt|escapejs}}{% else %}Sin descripción.{% endif %}"
+                                                           data-description="{% if entry.content %}{{entry.content|escape|linebreaksbr}}{% elif entry.description %}{{entry.description|escape|linebreaksbr}}{% elif entry.excerpt %}{{entry.excerpt|escape|linebreaksbr}}{% else %}Sin descripción.{% endif %}"
                                                            data-img="{{entry.image.url}}"
                                                         >Continuar Leyendo</a>
                                                     </div>
@@ -451,14 +451,14 @@ https://templatemo.com/tm-518-sentra
 
 <!-- Modal global único al final del body -->
 <div class="mi-modal" id="modalGlobal">
-  <div class="modal-contenido modal-flex">
-    <span class="cerrar" id="cerrarModal">&times;</span>
-    <div class="modal-img-col">
-      <img id="modalImagen" src="" alt="" style="max-width:100%;max-height:340px;display:none;margin-bottom:18px;border-radius:12px;">
+  <div class="modal-contenido modal-flex" style="background: #f8fff4; border-radius: 18px; box-shadow: 0 8px 40px rgba(66,122,54,0.13);">
+    <span class="cerrar" id="cerrarModal" style="color:#234d20;font-size:32px;top:18px;right:22px;">&times;</span>
+    <div class="modal-img-col" style="padding: 0 0 0 12px;">
+      <img id="modalImagen" src="" alt="" style="max-width:100%;max-height:340px;display:none;margin-bottom:18px;border-radius:14px;box-shadow:0 4px 18px #A1BD9444;">
     </div>
-    <div class="modal-text-col">
-      <h2 id="modalTitulo"></h2>
-      <p id="modalDescripcion"></p>
+    <div class="modal-text-col" style="padding-right:18px;">
+      <h2 id="modalTitulo" style="font-size:2.1rem;font-weight:800;color:#234d20;margin-bottom:14px;"></h2>
+      <p id="modalDescripcion" style="font-size:1.13rem;line-height:1.7;color:#2c3e50;text-align:justify;margin-bottom:28px;"></p>
       <div id="modalBotones" class="modal-botones-center"></div>
     </div>
   </div>
@@ -468,7 +468,8 @@ https://templatemo.com/tm-518-sentra
 document.addEventListener('DOMContentLoaded', function() {
   function openModal(title, description, url, whatsapp, img) {
     document.getElementById('modalTitulo').textContent = title || '';
-    document.getElementById('modalDescripcion').textContent = description || '';
+    // Mostrar HTML (con saltos de línea) en el modal
+    document.getElementById('modalDescripcion').innerHTML = description || '';
     let botones = '';
     if (url) {
       botones += `<button class="btn-enlace" onclick="window.open('${url}', '_blank')">📍 Dirección</button>`;
