@@ -1747,7 +1747,7 @@ body::before {
 }
 
 .btn-enlace {
-  background: linear-gradient(135deg, #7CBD1E 0%, #c9eb6a 100%);
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   color: white;
   padding: 10px 20px;
   border: none;
@@ -1756,12 +1756,15 @@ body::before {
   font-size: 14px;
   margin-top: 10px;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .btn-enlace:hover {
-  background: linear-gradient(135deg, #BCEB3C 0%, #7CBD1E 100%);
+  background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
 }
 
 .btn-whatsapp {

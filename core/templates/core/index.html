@@ -385,7 +385,7 @@ https://templatemo.com/tm-518-sentra
                                 </div>
                                 <div class="col-md-12">
                                   <fieldset>
-                                    <button type="submit" id="form-submit" class="btn">Enviar Mensaje</button>
+                                    <button type="submit" id="form-submit" class="accent-button button">Enviar Mensaje</button>
                                   </fieldset>
                                 </div>
                             </div>
@@ -394,9 +394,13 @@ https://templatemo.com/tm-518-sentra
                 </div>
             </section>
             <section class="footer">
-                <p>Copyright &copy; 2025 Turismo Lloa 
+                <p>Copyright &copy; 2025 Estudiantes ITSQMET 
                 
                 . Todos los derechos reservados</p>
+                <!-- Contador de visitas -->
+                <p style="margin-top: 10px; color: #7CBD1E; font-size: 14px;">
+                    <i class="fa fa-eye"></i> Visitas: <span id="contadorVisitas">0</span>
+                </p>
             </section>
         </div>
 
@@ -450,6 +454,27 @@ https://templatemo.com/tm-518-sentra
     </script>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+
+    <!-- Contador de visitas simple -->
+    <script>
+        // Contador de visitas usando localStorage
+        function actualizarContadorVisitas() {
+            // Obtener el contador actual o inicializar en 0
+            let visitas = localStorage.getItem('visitasLloa') || 0;
+            
+            // Incrementar el contador
+            visitas = parseInt(visitas) + 1;
+            
+            // Guardar el nuevo valor
+            localStorage.setItem('visitasLloa', visitas);
+            
+            // Mostrar el contador con animación simple
+            document.getElementById('contadorVisitas').textContent = visitas.toLocaleString();
+        }
+        
+        // Ejecutar cuando se carga la página
+        document.addEventListener('DOMContentLoaded', actualizarContadorVisitas);
+    </script>
 
 </body>
 </html>
