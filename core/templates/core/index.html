@@ -361,7 +361,8 @@ https://templatemo.com/tm-518-sentra
                         
                     </div>
                     <div class="section-content">
-                        <form id="contact" action="#" method="post">
+                        <form id="contact-form" method="post" action="{% url 'contact:submit' %}">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-4">
                                   <fieldset>
@@ -385,11 +386,18 @@ https://templatemo.com/tm-518-sentra
                                 </div>
                                 <div class="col-md-12">
                                   <fieldset>
-                                    <button type="submit" id="form-submit" class="accent-button button">Enviar Mensaje</button>
+                                    <button type="submit" id="form-submit" class="accent-button button">
+                                      <span id="btn-text">Enviar Mensaje</span>
+                                      <span id="btn-loading" style="display:none;">Enviando...</span>
+                                    </button>
                                   </fieldset>
                                 </div>
                             </div>
                         </form>
+                        
+                        <!-- Mensaje de confirmación -->
+                        <div id="form-messages" style="display:none; margin-top: 20px; padding: 15px; border-radius: 5px; text-align: center;">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -474,6 +482,94 @@ https://templatemo.com/tm-518-sentra
         
         // Ejecutar cuando se carga la página
         document.addEventListener('DOMContentLoaded', actualizarContadorVisitas);
+    </script>
+
+    <!-- Formulario de contacto con AJAX -->
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevenir envío normal del formulario
+            
+            // Mostrar estado de carga
+            document.getElementById('btn-text').style.display = 'none';
+            document.getElementById('btn-loading').style.display = 'inline';
+            document.getElementById('form-submit').disabled = true;
+            
+            // Obtener datos del formulario
+            const formData = new FormData(this);
+            
+            // Obtener CSRF token
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            console.log('CSRF Token:', csrfToken);
+            
+            // Enviar via AJAX
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': csrfToken,
+                },
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                console.log('Response OK:', response.ok);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                // Verificar si la respuesta es JSON
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    return response.json();
+                } else {
+                    throw new Error('La respuesta no es JSON válido');
+                }
+            })
+            .then(data => {
+                console.log('Response data:', data);
+                if (data.success) {
+                    // Éxito
+                    mostrarMensaje(data.message, 'success');
+                    document.getElementById('contact-form').reset(); // Limpiar formulario
+                } else {
+                    // Error
+                    mostrarMensaje(data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Full error:', error);
+                mostrarMensaje('Error al enviar el mensaje. Por favor, intenta de nuevo.', 'error');
+            })
+            .finally(() => {
+                // Restaurar botón
+                document.getElementById('btn-text').style.display = 'inline';
+                document.getElementById('btn-loading').style.display = 'none';
+                document.getElementById('form-submit').disabled = false;
+            });
+        });
+
+        // Mostrar mensaje de confirmación
+        function mostrarMensaje(texto, tipo) {
+            const messageDiv = document.getElementById('form-messages');
+            messageDiv.innerHTML = texto;
+            messageDiv.style.display = 'block';
+            
+            if (tipo === 'success') {
+                messageDiv.style.backgroundColor = '#d4edda';
+                messageDiv.style.color = '#155724';
+                messageDiv.style.border = '1px solid #c3e6cb';
+            } else {
+                messageDiv.style.backgroundColor = '#f8d7da';
+                messageDiv.style.color = '#721c24';
+                messageDiv.style.border = '1px solid #f5c6cb';
+            }
+            
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
     </script>
 
 </body>

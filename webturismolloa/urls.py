@@ -24,6 +24,7 @@ urlpatterns = [
     path('',include('core.urls')),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
+    path('contact/', include('contact.urls')),
 ]
 # urls de la imágenes para la web
 if settings.DEBUG:

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'core',  # Your core app
     'places',  # Your places app
     'blog',  # Your blog app
+    'contact',  # Your contact app
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email configuration (Gmail)
+# Para configurar tu correo, descomenta y completa con tus datos:
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'tu-email@gmail.com'  # Tu Gmail
+# EMAIL_HOST_PASSWORD = 'tu-app-password'  # App Password de Gmail (no tu contraseña normal)
+# DEFAULT_FROM_EMAIL = 'tu-email@gmail.com'
+
+# Para desarrollo, usar consola:
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Logging configuration
 LOGGING = {
