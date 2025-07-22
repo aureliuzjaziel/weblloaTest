@@ -278,7 +278,12 @@ https://templatemo.com/tm-518-sentra
                                 <div class="bt-play">Play</div>
                             </div>
                             <div class="video-container">
-                                <iframe width="100%" height="520" src="https://www.youtube.com/embed/xWBak-_58sU?si=3bcFxcYAhBmGsUjj" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+                                <video width="100%" height="520" controls preload="metadata" 
+                                       poster="{% static 'core/assets/img/video-poster.jpg' %}"
+                                       style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                                    <source src="{% static 'core/assets/videos/lloa-video.mp4' %}" type="video/mp4">
+                                    Tu navegador no soporta el elemento video.
+                                </video>
                             </div>
                         </div>
                     </div>

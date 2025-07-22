@@ -42,8 +42,11 @@ jQuery(document).ready(function($) {
 
 
         $(".box-video").click(function(){
-          $('iframe',this)[0].src += "&amp;autoplay=1";
-          $(this).addClass('open');
+          const video = $('video', this)[0];
+          if (video) {
+            video.play();
+            $(this).addClass('open');
+          }
         });
 
         $('.owl-carousel').owlCarousel({
