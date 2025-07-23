@@ -4,6 +4,7 @@ from blog.models import BlogEntry
 from collections import defaultdict
 from datetime import datetime
 import locale
+from .models import VisitCounter
 
 # Diccionario para traducir meses al español
 MONTHS_SPANISH = {
@@ -53,9 +54,14 @@ def home(request):
     
     # Ordenar meses por fecha (más reciente primero)
     months_data.sort(key=lambda x: x['date_obj'], reverse=True)
+
+    counter, _ = VisitCounter.objects.get_or_create(id=1)
+    counter.count += 1
+    counter.save()
     
     return render(request,'core/index.html',{
         'places': places,
         'blog_entries': blog_entries,
-        'months_data': months_data
+        'months_data': months_data,
+        'visits': counter.count
     })
