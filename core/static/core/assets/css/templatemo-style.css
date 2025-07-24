@@ -531,6 +531,17 @@ header {
 
 /* Slider Style */
 
+/*esrilo visitas*/
+.contador-visitas-sidebar {
+    color: #7CBD1E;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    text-align: center;
+}
+
 .slider .content-section {
   padding-top: 0px;
   min-width: 100%;
