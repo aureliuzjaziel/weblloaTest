@@ -118,7 +118,8 @@ jQuery(document).ready(function($) {
 
 });
 
-// Código modal
+// Código modal - DESHABILITADO (se usa el modal global en index.html)
+/*
 document.addEventListener("DOMContentLoaded", function () {
     const botonesAbrir = document.querySelectorAll(".abrir-modal");
 
@@ -155,4 +156,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+*/
 

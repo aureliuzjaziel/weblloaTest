@@ -589,14 +589,14 @@ https://templatemo.com/tm-518-sentra
 
 <!-- Modal global único al final del body -->
 <div class="mi-modal" id="modalGlobal">
-  <div class="modal-contenido modal-flex" style="background: #f8fff4; border-radius: 18px; box-shadow: 0 8px 40px rgba(66,122,54,0.13);">
-    <span class="cerrar" id="cerrarModal" style="color:#234d20;font-size:32px;top:18px;right:22px;">&times;</span>
-    <div class="modal-img-col" style="padding: 0 0 0 12px;">
-      <img id="modalImagen" src="" alt="" style="max-width:100%;max-height:340px;display:none;margin-bottom:18px;border-radius:14px;box-shadow:0 4px 18px #A1BD9444;">
+  <div class="modal-contenido modal-flex">
+    <span class="cerrar" id="cerrarModal">&times;</span>
+    <div class="modal-img-col">
+      <img id="modalImagen" src="" alt="">
     </div>
-    <div class="modal-text-col" style="padding-right:18px;">
-      <h2 id="modalTitulo" style="font-size:2.1rem;font-weight:800;color:#234d20;margin-bottom:14px;"></h2>
-      <p id="modalDescripcion" style="font-size:1.13rem;line-height:1.7;color:#2c3e50;text-align:justify;margin-bottom:28px;"></p>
+    <div class="modal-text-col">
+      <h2 id="modalTitulo"></h2>
+      <p id="modalDescripcion"></p>
       <div id="modalBotones" class="modal-botones-center"></div>
     </div>
   </div>
@@ -625,7 +625,7 @@ document.addEventListener('DOMContentLoaded', function() {
       imgEl.src = '';
       imgEl.style.display = 'none';
     }
-    document.getElementById('modalGlobal').style.display = 'flex';
+    document.getElementById('modalGlobal').classList.add('show');
     document.body.style.overflow = 'hidden';
   }
 
@@ -643,14 +643,25 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   document.getElementById('cerrarModal').onclick = function() {
-    document.getElementById('modalGlobal').style.display = 'none';
+    document.getElementById('modalGlobal').classList.remove('show');
     document.body.style.overflow = '';
   };
   document.getElementById('modalGlobal').onclick = function(e) {
     if (e.target === this) {
-      this.style.display = 'none';
+      this.classList.remove('show');
       document.body.style.overflow = '';
     }
   };
+  
+  // Cerrar modal con tecla Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('modalGlobal');
+      if (modal.classList.contains('show')) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    }
+  });
 });
 </script>
