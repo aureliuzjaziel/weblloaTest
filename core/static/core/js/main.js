@@ -118,43 +118,4 @@ jQuery(document).ready(function($) {
 
 });
 
-// Código modal - DESHABILITADO (se usa el modal global en index.html)
-/*
-document.addEventListener("DOMContentLoaded", function () {
-    const botonesAbrir = document.querySelectorAll(".abrir-modal");
-
-    botonesAbrir.forEach((boton) => {
-        boton.addEventListener("click", function (e) {
-            e.preventDefault();
-            const modal = this.parentElement.querySelector(".mi-modal");
-            modal.style.display = "block";
-
-            // Cerrar con la X
-            const cerrar = modal.querySelector(".cerrar");
-            cerrar.addEventListener("click", function () {
-                modal.style.display = "none";
-            });
-
-            // Cerrar al hacer clic en cualquier parte del documento que no sea el contenido del modal
-            setTimeout(() => {
-                document.addEventListener("click", function cerrarAlClickFuera(e) {
-                    // Si el clic NO fue dentro del contenido del modal ni en el botón de abrir
-                    if (!modal.contains(e.target) && !boton.contains(e.target)) {
-                        modal.style.display = "none";
-                        document.removeEventListener("click", cerrarAlClickFuera); 
-                    }
-                });
-            }, 10); 
-            
-
-            // Cerrar con la tecla Escape
-            document.addEventListener("keydown", function (e) {
-                if (e.key === "Escape") {
-                    modal.style.display = "none";
-                }
-            });
-        });
-    });
-});
-*/
 
