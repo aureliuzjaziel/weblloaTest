@@ -13,7 +13,7 @@ class BlogEntryAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('Información Principal', {
-            'fields': ('title', 'excerpt', 'content', 'image')
+            'fields': ('title', 'excerpt', 'content', 'image', 'url')
         }),
         ('Publicación', {
             'fields': ('is_published', 'published_date'),

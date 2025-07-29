@@ -7,6 +7,8 @@ class BlogEntry(models.Model):
     excerpt = models.TextField(max_length=300, verbose_name="Extracto", 
                               help_text="Resumen corto del artículo")
     image = models.ImageField(upload_to='blog/', verbose_name="Imagen")
+    url = models.URLField(blank=True, null=True, verbose_name="Enlace para leer más", 
+                         help_text="URL completa del artículo (ej: https://ejemplo.com/articulo)")
     created_date = models.DateTimeField(default=timezone.now, verbose_name="Fecha de creación")
     published_date = models.DateTimeField(blank=True, null=True, verbose_name="Fecha de publicación")
     is_published = models.BooleanField(default=False, verbose_name="Publicado")

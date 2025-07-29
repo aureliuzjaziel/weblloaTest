@@ -340,6 +340,7 @@ https://templatemo.com/tm-518-sentra
                                                            data-title="{{entry.title|escapejs}}"
                                                            data-description="{% if entry.content %}{{entry.content|escape|linebreaksbr}}{% elif entry.description %}{{entry.description|escape|linebreaksbr}}{% elif entry.excerpt %}{{entry.excerpt|escape|linebreaksbr}}{% else %}Sin descripción.{% endif %}"
                                                            data-img="{{entry.image.url}}"
+                                                           {% if entry.url %}data-blog-url="{{entry.url}}"{% endif %}
                                                         >Continuar Leyendo</a>
                                                     </div>
                                                 </div>
@@ -601,7 +602,7 @@ https://templatemo.com/tm-518-sentra
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  function openModal(title, description, url, whatsapp, img, menu, isMenuImg, isMenuPdf) {
+  function openModal(title, description, url, whatsapp, img, menu, isMenuImg, isMenuPdf, blogUrl) {
     document.getElementById('modalTitulo').textContent = title || '';
     // Mostrar HTML (con saltos de línea) en el modal
     document.getElementById('modalDescripcion').innerHTML = description || '';
@@ -620,6 +621,9 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         botones += `<button class="btn-menu" onclick="window.open('${menu}', '_blank')">🍽️ Ver Menú</button>`;
       }
+    }
+    if (blogUrl) {
+      botones += `<button class="btn-enlace" onclick="window.open('${blogUrl}', '_blank')">📖 Leer más</button>`;
     }
     document.getElementById('modalBotones').innerHTML = botones;
     // Imagen
@@ -646,7 +650,8 @@ document.addEventListener('DOMContentLoaded', function() {
         this.dataset.img,
         this.dataset.menu,
         this.dataset.isMenuImg,
-        this.dataset.isMenuPdf
+        this.dataset.isMenuPdf,
+        this.dataset.blogUrl
       );
     });
   });
