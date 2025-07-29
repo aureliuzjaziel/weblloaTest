@@ -1860,6 +1860,8 @@ font-size: clamp(1.2rem, 2.5vw, 1.8rem);
 font-size: clamp(0.9rem, 2vw, 1rem);
   line-height: 1.5;
   margin-bottom: 15px;
+  padding: 12px;
+  margin-top: 20px;
   color: #2c3e50;
   text-align: justify;
   overflow-wrap: break-word;
