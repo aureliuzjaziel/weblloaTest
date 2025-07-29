@@ -213,6 +213,7 @@ https://templatemo.com/tm-518-sentra
                                        data-img="{{place.image.url}}"
                                        {% if place.url %}data-url="{{place.url}}"{% endif %}
                                        {% if place.whatsapp_number %}data-whatsapp="{{place.get_whatsapp_url}}"{% endif %}
+                                       {% if place.menu_file %}data-menu="{{place.menu_file.url}}" data-is-menu-img="{{place.is_menu_image}}" data-is-menu-pdf="{{place.is_menu_pdf}}"{% endif %}
                                     >Leer Más</a>
                                 </div>
                             </div>
@@ -600,7 +601,7 @@ https://templatemo.com/tm-518-sentra
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  function openModal(title, description, url, whatsapp, img) {
+  function openModal(title, description, url, whatsapp, img, menu, isMenuImg, isMenuPdf) {
     document.getElementById('modalTitulo').textContent = title || '';
     // Mostrar HTML (con saltos de línea) en el modal
     document.getElementById('modalDescripcion').innerHTML = description || '';
@@ -610,6 +611,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if (whatsapp) {
       botones += `<button class="btn-whatsapp" onclick="window.open('${whatsapp}', '_blank')">💬 WhatsApp</button>`;
+    }
+    if (menu) {
+      if (isMenuImg === 'True') {
+        botones += `<button class="btn-menu" onclick="window.open('${menu}', '_blank')">🍽️ Ver Menú</button>`;
+      } else if (isMenuPdf === 'True') {
+        botones += `<button class="btn-menu" onclick="window.open('${menu}', '_blank')">📄 Ver Menú (PDF)</button>`;
+      } else {
+        botones += `<button class="btn-menu" onclick="window.open('${menu}', '_blank')">🍽️ Ver Menú</button>`;
+      }
     }
     document.getElementById('modalBotones').innerHTML = botones;
     // Imagen
@@ -633,7 +643,10 @@ document.addEventListener('DOMContentLoaded', function() {
         this.dataset.description,
         this.dataset.url,
         this.dataset.whatsapp,
-        this.dataset.img
+        this.dataset.img,
+        this.dataset.menu,
+        this.dataset.isMenuImg,
+        this.dataset.isMenuPdf
       );
     });
   });
