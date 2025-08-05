@@ -1,9 +1,9 @@
 ﻿"""
 Django settings for webturismolloa project.
 """
-
 from pathlib import Path
 import os
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,9 +19,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.up.railway.app'
 ]
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -65,12 +63,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'webturismolloa.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Database configuration
+if os.environ.get('DATABASE_URL'):
+    # PostgreSQL en Railway
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    # SQLite para desarrollo local
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
