@@ -1,1 +1,1 @@
-web: python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser_if_none_exists && python manage.py collectstatic --noinput && gunicorn webturismolloa.wsgi:application
+﻿web: python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser_if_none_exists && python manage.py collectstatic --noinput && gunicorn webturismolloa.wsgi:application

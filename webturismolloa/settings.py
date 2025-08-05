@@ -27,10 +27,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',  # Your core app
-    'places',  # Your places app
-    'blog',  # Your blog app
-    'contact',  # Your contact app
+    'core',
+    'places',
+    'blog',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -65,12 +65,10 @@ WSGI_APPLICATION = 'webturismolloa.wsgi.application'
 
 # Database configuration
 if os.environ.get('DATABASE_URL'):
-    # PostgreSQL en Railway
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
-    # SQLite para desarrollo local
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -98,17 +96,26 @@ TIME_ZONE = 'America/Guayaquil'
 USE_I18N = True
 USE_TZ = True
 
+# Static files configuration
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# WhiteNoise configuration for media files
-WHITENOISE_USE_FINDERS = True
-WHITENOISE_AUTOREFRESH = True
-
+# Media files configuration for Railway Volume
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+if os.environ.get('RAILWAY_VOLUME_MOUNT_PATH'):
+    # En Railway con Volume
+    MEDIA_ROOT = os.path.join(os.environ.get('RAILWAY_VOLUME_MOUNT_PATH'), 'media')
+else:
+    # Local development
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Security settings for production
+if not DEBUG:
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
