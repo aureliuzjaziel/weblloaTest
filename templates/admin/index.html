@@ -1,0 +1,45 @@
+{% extends "admin/index.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <style>
+        .dashboard-welcome {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #7CBD1E;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .dashboard-welcome h2 {
+            color: #7CBD1E;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        
+        .dashboard-welcome p {
+            color: #666;
+            margin: 0;
+        }
+        
+        .stats-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="dashboard-welcome">
+        <h2>🏔️ Bienvenido al Panel de Administración</h2>
+        <p>Gestiona el contenido del sitio web de Turismo Lloa desde aquí</p>
+    </div>
+    
+    {{ block.super }}
+{% endblock %}

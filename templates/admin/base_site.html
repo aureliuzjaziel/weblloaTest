@@ -1,0 +1,40 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/admin_custom.css' %}">
+    <style>
+        /* Estilos adicionales inline si necesitas */
+        #header {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Personalizar el logo del admin */
+        #branding h1 {
+            margin: 0;
+            padding: 10px 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | Turismo Lloa Admin{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}" style="color: #7CBD1E; text-decoration: none;">
+        🏔️ Turismo Lloa - Administración
+    </a>
+</h1>
+{% endblock %}
+
+{% block footer %}
+<div id="footer" style="padding: 15px; margin-top: 20px;">
+    <p style="margin: 0; color: #7CBD1E; font-weight: bold;">
+        © 2025 Turismo Lloa - Sistema de Administración
+    </p>
+    <p style="margin: 5px 0 0 0; font-size: 0.9em;">
+        Desarrollado con ❤️ para promover el turismo en Lloa
+    </p>
+</div>
+{% endblock %}

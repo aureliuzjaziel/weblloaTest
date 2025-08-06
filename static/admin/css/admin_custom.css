@@ -1,0 +1,135 @@
+/* Personalización del Admin de Django para Turismo Lloa */
+
+/* Cambiar colores principales */
+#header {
+    background: linear-gradient(135deg, #7CBD1E 0%, #5a9c16 100%) !important;
+    color: white !important;
+    border-bottom: 3px solid #4a8012;
+}
+
+/* Título principal */
+#site-name {
+    color: white !important;
+    font-weight: bold !important;
+    font-size: 1.8rem !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+#site-name a {
+    color: white !important;
+}
+
+#site-name a:hover {
+    color: #f0f0f0 !important;
+    text-decoration: none !important;
+}
+
+/* Menú de usuario */
+#user-tools {
+    color: white !important;
+}
+
+#user-tools a {
+    color: white !important;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding: 5px;
+}
+
+#user-tools a:hover {
+    background-color: rgba(255,255,255,0.2) !important;
+    border-radius: 3px;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    background: #f8f9fa !important;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.breadcrumbs a {
+    color: #7CBD1E !important;
+}
+
+/* Botones */
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: linear-gradient(135deg, #7CBD1E 0%, #5a9c16 100%) !important;
+    border: 1px solid #4a8012 !important;
+    color: white !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease;
+}
+
+.button:hover, input[type=submit]:hover, input[type=button]:hover, .submit-row input:hover, a.button:hover {
+    background: linear-gradient(135deg, #5a9c16 0%, #4a8012 100%) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Enlaces */
+a:link, a:visited {
+    color: #7CBD1E !important;
+}
+
+a:hover {
+    color: #5a9c16 !important;
+}
+
+/* Tablas */
+.results th {
+    background: #f8f9fa !important;
+    border-bottom: 2px solid #7CBD1E !important;
+}
+
+.results tr:hover {
+    background-color: rgba(124, 193, 30, 0.1) !important;
+}
+
+/* Iconos de acciones */
+.addlink, .changelink {
+    color: #7CBD1E !important;
+    font-weight: bold;
+}
+
+/* Módulos del dashboard */
+.module h2 {
+    background: linear-gradient(135deg, #7CBD1E 0%, #5a9c16 100%) !important;
+    color: white !important;
+    border-radius: 4px 4px 0 0;
+}
+
+.module caption {
+    background: linear-gradient(135deg, #7CBD1E 0%, #5a9c16 100%) !important;
+    color: white !important;
+}
+
+/* Formularios */
+.form-row {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+/* Mensajes de éxito/error */
+.messagelist .success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+    border-left: 4px solid #7CBD1E !important;
+}
+
+.messagelist .error {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%) !important;
+    border-left: 4px solid #dc3545 !important;
+}
+
+/* Footer personalizado */
+#footer {
+    background: #f8f9fa !important;
+    border-top: 3px solid #7CBD1E !important;
+    text-align: center;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #site-name {
+        font-size: 1.4rem !important;
+    }
+}
